@@ -1,0 +1,31 @@
+name: Bug report
+description: Report a reproducible library bug
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Library version
+      placeholder: FDCxCapSense version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Include sketch/example, board, and expected vs actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / compiler output
+      render: text

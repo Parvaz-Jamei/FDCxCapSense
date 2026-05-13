@@ -1,0 +1,38 @@
+name: Compile examples
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  compile-examples:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fqbn:
+          - arduino:avr:uno
+          - arduino:samd:mkrzero
+          - esp32:esp32:esp32
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Normalize script permissions
+        run: |
+          find tools scripts -type f -name "*.sh" -exec chmod +x {} \;
+
+      - uses: arduino/setup-arduino-cli@v2
+
+      - name: Configure cores
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+          arduino-cli core install arduino:samd
+          arduino-cli config init --overwrite
+          arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
+
+      - name: Compile examples
+        run: bash ./scripts/compile_examples_arduino_cli.sh "${{ matrix.fqbn }}"

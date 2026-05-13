@@ -1,0 +1,30 @@
+name: Unit and static checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  host-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Normalize script permissions
+        run: |
+          find tools scripts -type f -name "*.sh" -exec chmod +x {} \;
+
+      - name: Clean package check
+        run: bash ./tools/clean_package_check.sh
+
+      - name: Claim safety scan
+        run: bash ./tools/claim_safety_scan.sh
+
+      - name: Architecture contract scan
+        run: bash ./scripts/architecture_contract_scan.sh
+
+      - name: Host smoke compile
+        run: bash ./tools/host_smoke_compile.sh
+
+      - name: Host unit tests
+        run: bash ./tools/host_unit_tests.sh

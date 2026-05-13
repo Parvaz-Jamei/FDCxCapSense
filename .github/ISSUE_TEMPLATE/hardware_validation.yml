@@ -1,0 +1,54 @@
+name: Hardware validation
+description: Record owner-side hardware validation evidence
+title: "[Hardware]: "
+labels: [hardware-validation]
+body:
+  - type: input
+    id: board
+    attributes:
+      label: Board
+      placeholder: Arduino UNO / ESP32 DevKit / SAMD MKR Zero
+    validations:
+      required: true
+  - type: input
+    id: core
+    attributes:
+      label: Arduino core version
+      placeholder: arduino:avr 1.8.6 / esp32 3.x
+    validations:
+      required: true
+  - type: input
+    id: chip
+    attributes:
+      label: Sensor chip
+      placeholder: FDC1004 / FDC2214
+    validations:
+      required: true
+  - type: textarea
+    id: wiring
+    attributes:
+      label: Wiring and sensor setup
+    validations:
+      required: true
+  - type: input
+    id: example
+    attributes:
+      label: Example used
+      placeholder: FDC1004_BasicRead
+    validations:
+      required: true
+  - type: textarea
+    id: serial
+    attributes:
+      label: Serial output / logs
+      render: text
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: bench / cable length / electrode notes / temperature
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      placeholder: YYYY-MM-DD

@@ -1,0 +1,23 @@
+name: Arduino Lint
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  arduino-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Normalize script permissions
+        run: |
+          find tools scripts -type f -name "*.sh" -exec chmod +x {} \;
+
+      - name: Arduino Lint
+        uses: arduino/arduino-lint-action@v2
+        with:
+          compliance: strict
+          project-type: library
+          library-manager: submit
