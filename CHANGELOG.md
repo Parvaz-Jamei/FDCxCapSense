@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.13 — Arduino Library Manager Metadata Fix
+
+- Fixed malformed `library.properties` by restoring one `key=value` field per line.
+- Updated Library Manager submission metadata to version `0.6.13`.
+- Updated README installation wording from pending owner setup to Library Manager submission in progress.
+- Updated release process and Library Manager checklists to remove stale `v0.6.11` release wording.
+- Kept sensor logic, public API, examples, claims, and driver behavior unchanged.
+
 ## 0.6.11 — Final Industrial Quality Polish
 
 - Made `startContinuous()` preflight high-current/channel incompatibility before any Sleep Mode side-effect.
