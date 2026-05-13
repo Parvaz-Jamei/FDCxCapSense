@@ -95,8 +95,7 @@ LinkedIn: [linkedin.com/in/parvaz-jamei](https://www.linkedin.com/in/parvaz-jame
 FDCxCapSense
 ```
 
-Arduino Library Manager submission is pending owner-side public repository URL, CI, Arduino Lint, release tagging, and final owner review.
-
+Arduino Library Manager submission is in progress. After approval, install from Arduino IDE via Sketch → Include Library → Manage Libraries and search for FDCxCapSense.
 ### Manual installation
 
 Download the release ZIP and place it in your Arduino libraries folder.
